@@ -25,11 +25,7 @@ const map = {
   },
 } as const;
 
-const mistakeFields = [
-  UserField.Address, 
-  UserField.Email, 
-  UserField.FullName
-];
+const mistakeFields = [UserField.Address, UserField.Email, UserField.FullName];
 
 export class DataGen {
   private mistaker: Mistaker;
@@ -67,9 +63,9 @@ export class DataGen {
       address: this.faker.location.streetAddress({ useFullAddress: true }),
     }));
 
-    const rounded = this.rng.randomRound(mistakes); 
+    const rounded = this.rng.randomRound(mistakes);
 
-    result.forEach(user => {
+    result.forEach((user) => {
       for (let i = 0; i < rounded; i++) {
         this.makeMistake(user);
       }

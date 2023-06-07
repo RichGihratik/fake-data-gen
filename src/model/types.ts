@@ -2,13 +2,13 @@ export enum UserField {
   Uuid = 'uuid',
   FullName = 'fullName',
   Address = 'address',
-  Email = 'email'
+  Email = 'email',
 }
 
 export enum Locales {
   EN = 'eng',
   RU = 'rus',
-  DE = 'deu'
+  DE = 'deu',
 }
 
 export interface User {
@@ -27,10 +27,9 @@ export type Item<T extends string | unknown[]> = T extends string
 export interface IRandom {
   setSeed(seed: string | undefined): void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  selectRandomItem<T extends string | any[]>(col: T, backOffset?: number): [number, Item<T>];
+  selectRandomItem<T extends string | any[]>(
+    col: T,
+    backOffset?: number,
+  ): [number, Item<T>];
   randomRound(num: number): number;
-}
-
-export interface IMistaker {
-
 }

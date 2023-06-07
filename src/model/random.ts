@@ -1,7 +1,6 @@
 import { alea } from 'seedrandom';
 import { type IRandom, type Item } from './types';
 
-
 // From https://github.com/davidbau/seedrandom/blob/4460ad325a0a15273a211e509f03ae0beb99511a/lib/alea.js#L78
 export function strToNumberSeed(seed?: string): number | undefined {
   if (!seed) return;

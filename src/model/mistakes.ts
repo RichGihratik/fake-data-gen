@@ -1,6 +1,6 @@
-import { type IRandom } from  "./types";
+import { type IRandom } from './types';
 
-const nums = '0123456789'; 
+const nums = '0123456789';
 
 export class Mistaker {
   private alphas = 'abcdefghigklmnopqrstuvwxyz';
