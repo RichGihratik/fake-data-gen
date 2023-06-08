@@ -3,7 +3,7 @@ import { type IRandom, type Item } from './types';
 
 // From https://github.com/davidbau/seedrandom/blob/4460ad325a0a15273a211e509f03ae0beb99511a/lib/alea.js#L78
 export function strToNumberSeed(seed?: string): number | undefined {
-  if (!seed) return;
+  if (seed === undefined) return undefined;
   let n = 0xefc8249d;
   for (let i = 0; i < seed.length; i++) {
     n += seed.charCodeAt(i);
@@ -15,7 +15,7 @@ export function strToNumberSeed(seed?: string): number | undefined {
     h -= n;
     n += h * 0x100000000; // 2^32
   }
-  return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
+  return n >>> 0;
 }
 
 export class Random implements IRandom {
