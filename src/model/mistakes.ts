@@ -11,8 +11,8 @@ export class Mistaker {
     this.alphas = alpha;
   }
 
-  addChar(str: string): string {
-    const char = this.rng.selectRandomItem(this.alphas + nums)[1];
+  addChar(str: string, alpha?: string): string {
+    const char = this.rng.selectRandomItem(alpha ?? this.alphas + nums)[1];
     const place = this.rng.selectRandomItem(str, -1)[0];
     const arr = [...str];
     arr.splice(place, 0, char);
@@ -34,9 +34,9 @@ export class Mistaker {
     return arr.join('');
   }
 
-  randomMistake(str: string): string {
+  randomMistake(str: string, alpha?: string): string {
     const funcs = [
-      () => this.addChar(str),
+      () => this.addChar(str, alpha),
       () => this.removeChar(str),
       () => this.swapChars(str),
     ];

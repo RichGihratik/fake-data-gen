@@ -30,7 +30,7 @@ export class Random implements IRandom {
     col: T,
     backOffset = 0,
   ): [number, Item<T>] {
-    const index = this.rng.int32() % (col.length - backOffset);
+    const index = Math.abs(this.rng.int32()) % (col.length - backOffset);
     return [index, col[index]];
   }
 

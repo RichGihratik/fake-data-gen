@@ -6,13 +6,15 @@ const dataCount = 20;
 class UsersData {
   constructor() {
     makeAutoObservable(this);
+    this.refresh();
   }
 
   private rng = new Random();
   private dataGen = new DataGen(this.rng);
 
+  locale = Locales.EN;
   seed: string | undefined;
-  mistakesCount: number = 0;
+  mistakesCount = 0;
   data: User[] = [];
 
   setSeed(seed?: string) {
@@ -36,7 +38,9 @@ class UsersData {
   }
 
   fetchMore() {
-    this.data.concat(this.dataGen.generateUsers(this.mistakesCount, dataCount));
+    this.data = this.data.concat(
+      this.dataGen.generateUsers(this.mistakesCount, dataCount),
+    );
   }
 }
 

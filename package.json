@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.4",
     "autoprefixer": "^10.4.14",
+    "lodash": "^4.17.21",
     "mobx": "^6.9.0",
     "mobx-react": "^7.6.0",
     "postcss": "^8.4.24",
@@ -26,6 +27,7 @@
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.2.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",

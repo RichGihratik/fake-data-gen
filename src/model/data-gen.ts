@@ -56,26 +56,31 @@ export class DataGen {
   }
 
   generateUsers(mistakes = 0, count = 1): User[] {
-    const result = new Array(count).map(() => ({
-      uuid: this.faker.string.uuid(),
-      email: this.faker.internet.email(),
-      fullName: this.faker.person.fullName(),
-      address: this.faker.location.streetAddress({ useFullAddress: true }),
-    }));
+    const result = Array.from(new Array(count), () => {
+      return {
+        uuid: this.faker.string.uuid(),
+        email: this.faker.internet.email(),
+        fullName: this.faker.person.fullName(),
+        address: this.faker.location.streetAddress({ useFullAddress: true }),
+      };
+    });
 
     const rounded = this.rng.randomRound(mistakes);
 
-    result.forEach((user) => {
+    return result.map((user) => {
+      const copy = { ...user };
       for (let i = 0; i < rounded; i++) {
-        this.makeMistake(user);
+        this.makeMistake(copy);
       }
+      return copy;
     });
-
-    return result;
   }
 
   private makeMistake(user: User) {
     const field = this.rng.selectRandomItem(mistakeFields)[1];
-    user[field] = this.mistaker.randomMistake(user[field]);
+    user[field] =
+      field === UserField.Email
+        ? this.mistaker.randomMistake(user[field], map[Locales.EN].alpha)
+        : this.mistaker.randomMistake(user[field]);
   }
 }
