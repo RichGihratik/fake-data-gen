@@ -1,8 +1,10 @@
-import { AppBar, Paper, Typography, Toolbar } from '@mui/material';
-import { Settings } from '@mui/icons-material';
+import { AppBar, Paper, Typography, Toolbar, Button } from '@mui/material';
+import { Settings, Save } from '@mui/icons-material';
 import { UserTable } from './user-table';
 import { GenOptions } from './GenOptions';
 import { MenuPopup } from './MenuPopup';
+
+import { usersDataStore as store } from '@/stores';
 
 export function MainView() {
   return (
@@ -17,6 +19,9 @@ export function MainView() {
           >
             Fake data generator
           </Typography>
+          <Button startIcon={<Save />} onClick={() => store.downloadData()}>
+            Export to CSV
+          </Button>
         </Toolbar>
       </AppBar>
       <div className="p-10">

@@ -1,4 +1,4 @@
-import { DataGen, Locales, Random, User } from '@/model';
+import { DataGen, Locales, Random, User, downloadData } from '@/model';
 import { makeAutoObservable } from 'mobx';
 
 const dataCount = 20;
@@ -30,6 +30,10 @@ class UsersData {
   setMistakesCount(count: number) {
     this.mistakesCount = count;
     this.refresh();
+  }
+
+  downloadData() {
+    downloadData(this.data);
   }
 
   refresh() {
