@@ -23,6 +23,7 @@ class UsersData {
   }
 
   setLocale(locale: Locales) {
+    this.locale = locale;
     this.dataGen.setLocale(locale);
     this.refresh();
   }

@@ -24,14 +24,9 @@ const debouncedMistakes = debounce((_count: number) => {
 }, 200);
 
 export const GenOptions = observer(() => {
-  const [locale, setLocale] = useState<Locales>(store.locale);
+  const [locale, setLocale] = useState(store.locale);
   const [count, setCount] = useState(store.mistakesCount);
   const [seed, setSeed] = useState(store.seed ?? '');
-
-  function handleLocale(_locale: Locales) {
-    setLocale(_locale);
-    store.setLocale(_locale);
-  }
 
   function handleCount(_count: number) {
     setCount(_count);
@@ -55,11 +50,12 @@ export const GenOptions = observer(() => {
             <Select
               labelId="locale-label"
               value={locale}
-              defaultValue={Locales.EN}
               label="Locale"
-              onChange={({ target: { value } }) =>
-                handleLocale(value as Locales)
-              }
+              onChange={({ target: { value } }) => {
+                const loc = value as Locales;
+                setLocale(loc);
+                store.setLocale(loc);
+              }}
             >
               <MenuItem value={Locales.EN}>English</MenuItem>
               <MenuItem value={Locales.RU}>Russian</MenuItem>
