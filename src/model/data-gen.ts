@@ -65,10 +65,9 @@ export class DataGen {
       };
     });
 
-    const rounded = this.rng.randomRound(mistakes);
-
     return result.map((user) => {
       const copy = { ...user };
+      const rounded = this.rng.randomRound(mistakes);
       for (let i = 0; i < rounded; i++) {
         this.makeMistake(copy);
       }
