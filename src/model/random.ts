@@ -1,21 +1,18 @@
 import { alea } from 'seedrandom';
 import { type IRandom, type Item } from './types';
 
-// From https://github.com/davidbau/seedrandom/blob/4460ad325a0a15273a211e509f03ae0beb99511a/lib/alea.js#L78
+// From https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 export function strToNumberSeed(seed?: string): number | undefined {
   if (seed === undefined) return undefined;
-  let n = 0xefc8249d;
+  let hash = 0,
+    chr;
+  if (seed.length === 0) return hash;
   for (let i = 0; i < seed.length; i++) {
-    n += seed.charCodeAt(i);
-    let h = 0.02519603282416938 * n;
-    n = h >>> 0;
-    h -= n;
-    h *= n;
-    n = h >>> 0;
-    h -= n;
-    n += h * 0x100000000; // 2^32
+    chr = seed.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
   }
-  return n >>> 0;
+  return hash;
 }
 
 export class Random implements IRandom {
