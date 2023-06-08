@@ -44,7 +44,7 @@ export const GenOptions = observer(() => {
   }
 
   return (
-    <div className="pb-10 flex flex-row items-center max-w-sm">
+    <div className="p-10 pt-5 flex flex-col max-w-sm gap-4">
       <Grid container spacing={2} alignItems="center">
         <Grid item xs>
           <Typography>Locale: </Typography>
@@ -98,7 +98,7 @@ export const GenOptions = observer(() => {
         </Grid>
 
         <Grid item xs={12}>
-          <Typography>Seed options:</Typography>
+          <Typography>Seed:</Typography>
         </Grid>
         <Grid item xs>
           <Input
@@ -115,7 +115,7 @@ export const GenOptions = observer(() => {
         <Grid item xs="auto" alignContent="center">
           <Button
             variant="contained"
-            title="Refresh"
+            title="Random"
             size="small"
             startIcon={<Casino />}
             color="primary"

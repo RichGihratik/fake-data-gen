@@ -20,6 +20,7 @@ export const UserTable = observer(() => {
           responsiveWrapper: {
             style: {
               maxHeight: 'none',
+              borderRadius: '20px',
             },
           },
         }}
@@ -31,7 +32,6 @@ export const UserTable = observer(() => {
       <InfiniteScroll
         disabled={loading}
         onShow={() => {
-          console.log('Call');
           store.fetchMore();
         }}
       />

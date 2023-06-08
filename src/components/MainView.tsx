@@ -1,6 +1,8 @@
 import { AppBar, Paper, Typography, Toolbar } from '@mui/material';
+import { Settings } from '@mui/icons-material';
 import { UserTable } from './user-table';
 import { GenOptions } from './GenOptions';
+import { MenuPopup } from './MenuPopup';
 
 export function MainView() {
   return (
@@ -13,14 +15,16 @@ export function MainView() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            Fake data
+            Fake data generator
           </Typography>
         </Toolbar>
       </AppBar>
       <div className="p-10">
-        <GenOptions />
         <UserTable />
       </div>
+      <MenuPopup title="Options" icon={<Settings />}>
+        <GenOptions />
+      </MenuPopup>
     </Paper>
   );
 }
